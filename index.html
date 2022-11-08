@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Packager</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Opinionated packages of interesting software. Desgined for containers first.">
+  <meta name="keywords" content="alpine, apk, APKBUILD, abuild, static, containers, docker">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      background: #fcfdfc;
+      color: #131313;
+      font-family: Helvetica, Verdana, sans-serif;
+      line-height: 1.2em;
+      margin: 0 auto;
+      max-width: 35em ;
+    }
+    code { 
+        background: hsl(220, 80%, 90%); 
+    }
+    pre {
+      background: hsl(220, 80%, 90%); 
+      border: 1px #131313 dotted;
+      padding: 5pt;
+      padding-left: 20pt;
+      text-indent: -15pt;
+      white-space: normal;
+    }
+    pre:first-line {
+      text-indent: 0;
+    }
+    ul {
+      list-style: square;
+      list-style-position: inside;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>The Packager</h1>
+  </header>
+
+  <main>
+    <p>The Packager provides a collection of prebuilt packages, using Alpine's APK package format.</p>
+    <p>The packages are built using static-linking where possible, to minimise dependencies.</p>
+    <p>Supported architectures:</p>
+    <ul>
+      <li>x86_64</li>
+      <li>aarch64</li>
+    </ul>
+
+    <section>
+      <h2>Usage</h2>
+      <p>Use <code>sudo</code> if needed.</p>
+
+      <h3>Add the public key</h3>
+      <pre>
+        <code>curl -s https://thepackager.github.io/keys/packager@lists.alpinelinux.org-6368d779.rsa.pub -o /etc/apk/keys/packager@lists.alpinelinux.org-6368d779.rsa.pub</code>
+      </pre>
+
+      <h3>Add ThePackager as an APK repository</h3>
+      <pre>
+        <code>sed -i -e "1i https://thepackager.github.io/alpine" /etc/apk/repositories</code>
+        <code>apk update</code>
+      </pre>
+    </section>
+  </main>
+
+</body>
+</html>
